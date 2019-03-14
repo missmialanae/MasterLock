@@ -1,11 +1,14 @@
 package edu.xavier.csci;
 import java.util.Random;
+import java.util.Scanner;
 
 public class Lock {
 
-    public int x;
-    public int y;
-    public int z;
+
+    private int x;
+    private int y;
+    private int z;
+
 
     public Lock(){
 
@@ -13,43 +16,35 @@ public class Lock {
         this.y = 0;
         this.z = 0;
 
+
     }// end constuctor
 
-    public void setcode(){
+    public static int setCode(){
 
         Random rand = new Random();
 
-        this.x = rand.nextInt((39 - 0)+ 1)+ 0;
-        this.y = rand.nextInt((39 - 0)+ 1) + 0;
-        this.z = rand.nextInt((39 - 0)+ 1)+ 0;
+        int x = rand.nextInt((39 - 0)+ 1);
+        int y = rand.nextInt((39 - 0)+ 1) ;
+        int z = rand.nextInt((39 - 0) + 1);
+
+        System.out.println("The code is " + x +" "+ y + " " + z);
+        return  x + y + z;
 
     }// end setCode
 
-    public static boolean isClosed(int a, int b, int c){
+    public static boolean isClosed(boolean c){
 
-        while (a == x && b == this.y && c == this.z) {
-            return false;
+        if(c== true){
+            isClosed(true);
+        }else{
+            if(c== false){
+                isClosed(false);
+            }
         }
-       return true;
+        return c;
 
-    }// end isClosed
+    }// end is status
 
-    public void lockStaus(){
-        //tells the user whether the lock is open or closed
-
-
-    }// end lock status
-
-    public void code(int a, int b, int c){
-        // while the lock is closed
-
-        while (a == this.x && b == this.y && c == this.z){
-
-        }//end while loop
-
-
-
-    }// end code
 
     public static int onTop(int z){
 
@@ -57,17 +52,75 @@ public class Lock {
 
     }// end on top
 
-    public void direction(){
-        // direction in which to spin
+    public int leftDirection(){
+
+        Scanner scan2 = new Scanner(System.in);
+
+        System.out.println("Input Second Number");
+
+        while(!scan2.hasNextInt()){
+            scan2.next();
+        }// end while loop
+
+        int input2 = scan2.nextInt();
+
+
+        if (input2 == y) {
+            System.out.println("Lock turns right");
+            isClosed(false);
+
+        }// end else statement
+
+
+        return y;
+
+    }// end left direction
+
+    public int rightDirection() {// this may not be a void method
+
+        Scanner scan = new Scanner(System.in);
+
+
+        System.out.println("Input First Number");
+
+        while (!scan.hasNextInt()) {
+            scan.next();
+
+            int input = scan.nextInt();
+
+            if (input == x) {
+                System.out.println("Lock turns right");
+                isClosed(false);
+
+            }// end  statment
+
+            break;
+        }
+
+        return x;
 
     }
+    // end if statement
 
-    public void lockReset(){
-        Lock l1 = new Lock();
-    }
+    public int turnRightAgain() {
 
+        Scanner scan3 = new Scanner(System.in);
 
+        System.out.println("Input Third Number");
 
+        while (!scan3.hasNextInt()) {
+            scan3.next();
 
+        }// end while loop
+
+        int input3 = scan3.nextInt();
+
+        while(input3 == z){
+            isClosed(false);
+            System.out.println("Lock is Open");
+        }
+
+        return z;
+    }// end turn right again
 
 }// end of class

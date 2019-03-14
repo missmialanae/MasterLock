@@ -3,12 +3,22 @@
  */
 package edu.xavier.csci;
 
+import java.util.Scanner;
+
 public class App {
-    public String getGreeting() {
-        return "Hello world.";
-    }
+
 
     public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
-    }
-}
+        Lock l1 = new Lock();
+
+        l1.setCode();
+
+        l1.rightDirection();
+        l1.leftDirection();
+        l1.turnRightAgain();
+
+
+
+
+    }// end main
+}// end class

@@ -10,9 +10,8 @@ public class AppTest {
 
     @Test
 
-    public void testAppHasAGreeting() {
+    public void testAppHasAStatus() {
         App classUnderTest = new App();
-        assertNotNull("app should have a greeting",
-                classUnderTest.getGreeting());
+
     }
 }
