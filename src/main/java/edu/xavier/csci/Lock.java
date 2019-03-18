@@ -8,6 +8,7 @@ public class Lock {
     private int x;
     private int y;
     private int z;
+    private boolean c;
 
 
     public Lock(){
@@ -15,40 +16,49 @@ public class Lock {
         this.x = 0;
         this.y = 0;
         this.z = 0;
+        this.c = true;
 
 
     }// end constuctor
 
-    public static int setCode(){
+    public int setCode(){
 
         Random rand = new Random();
 
-        int x = rand.nextInt((39 - 0)+ 1);
-        int y = rand.nextInt((39 - 0)+ 1) ;
-        int z = rand.nextInt((39 - 0) + 1);
+         this.x = rand.nextInt((39 - 0)+ 1);
+        this.y = rand.nextInt((39 - 0)+ 1) ;
+        this.z = rand.nextInt((39 - 0) + 1);
 
         System.out.println("The code is " + x +" "+ y + " " + z);
         return  x + y + z;
 
     }// end setCode
 
-    public static boolean isClosed(boolean c){
+    public boolean isClosed(){
 
-        if(c== true){
-            isClosed(true);
+        boolean status = true;
+
+        if(c == true){
+            status = true;
         }else{
             if(c== false){
-                isClosed(false);
+                status = false;
             }
         }
-        return c;
+        System.out.println("The Lock is " + status +" ");
+
+        return status;
 
     }// end is status
 
+    public boolean lockStatus(){
+        return this.c;
+    }
 
-    public static int onTop(int z){
 
-        return z;
+    public int onTop(){
+
+        return this.z;
 
     }// end on top
 
@@ -60,17 +70,17 @@ public class Lock {
 
         while(!scan2.hasNextInt()){
             scan2.next();
+
         }// end while loop
 
         int input2 = scan2.nextInt();
+        if(input2 ==y){
+            System.out.println("Lock turns left");
 
-
-        if (input2 == y) {
-            System.out.println("Lock turns right");
-            isClosed(false);
-
-        }// end else statement
-
+        }else{
+            System.out.println("Incorrect");
+            input2 = scan2.nextInt();
+        }
 
         return y;
 
@@ -85,17 +95,17 @@ public class Lock {
 
         while (!scan.hasNextInt()) {
             scan.next();
+        }
 
             int input = scan.nextInt();
 
-            if (input == x) {
-                System.out.println("Lock turns right");
-                isClosed(false);
+            if(input == x){
 
-            }// end  statment
-
-            break;
-        }
+                System.out.println("Lock Turns Right!");
+            }else{
+                System.out.println("Incorrect");
+                input = scan.nextInt();
+            }
 
         return x;
 
@@ -109,15 +119,20 @@ public class Lock {
         System.out.println("Input Third Number");
 
         while (!scan3.hasNextInt()) {
+
             scan3.next();
 
         }// end while loop
 
         int input3 = scan3.nextInt();
 
-        while(input3 == z){
-            isClosed(false);
+        if(input3 == z){
+
             System.out.println("Lock is Open");
+            c = false;
+        }else{
+            System.out.println("Incorrect");
+            input3 = scan3.nextInt();
         }
 
         return z;

@@ -12,13 +12,16 @@ public class App {
         Lock l1 = new Lock();
 
         l1.setCode();
-
+        l1.onTop();
+        l1.lockStatus();
         l1.rightDirection();
         l1.leftDirection();
         l1.turnRightAgain();
+        l1.isClosed();
 
 
 
 
     }// end main
+
 }// end class
